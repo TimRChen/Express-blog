@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+    .container
+        .row
+            form.form-horizontal(methos="post", action="/admin")
+                .form-group
+                    label.col-sm-3.control-label(for="inputTitle") 文章标题
+                    .col-sm-10
+                        input#inputTitle.form-control(type="text", name="essay[title]")
+                .form-group
+                    label.col-sm-3.control-label(for="inputContent") 文章内容
+                    .col-sm-10
+                        input#inputTitle.form-control(type="text", name="essay[content]")

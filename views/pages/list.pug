@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+    .container
+        .row
+            table.table.table-hover.table-bordered
+                thead
+                    tr
+                        th 文章标题
+                        th 文章内容
+                        th 查看
+                        th 更新
+                        th 删除
+                tbody
+                    //- each item in essay
+                    tr(class="item-id-#{item._id}")
+                        td #{item.title}
+                        td #{item.content}
+                        td: a(target="_blank", href="../essay/#{item._id}") 查看
+                        td: a(target="_blank", href="../admin/update/#{item._id}") 修改
+                        td
+                            button.btn.btn-danger.del(type="button", data-id="#{item_id}") 删除
