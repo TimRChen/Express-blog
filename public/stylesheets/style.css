@@ -1,8 +1,51 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+	list-style: none;
+	text-decoration: none!important;
 }
 
-a {
-  color: #00B7FF;
+/* header */
+.banner-mask {
+	background-position: 50%;
+	background-size: cover;
+	position: relative;
+	padding: 20px 0;
+	height: 320px;
+	background-image: url(../images/banner.jpeg);
+}
+
+.container {
+    max-width: 740px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 90%;
+}
+.nav-header {
+    padding-top: 30px;
+    font-family: exoregular;
+    position: relative;
+}
+.nav-header .nav-header-container a {
+    display: inline-block;
+    border: 1px solid hsla(0,0%,100%,.8);
+    color: hsla(0,0%,100%,.8);
+    font-size: 14px;
+    padding: 3px 12px;
+    border-radius: 3px;
+    margin-right: 8px;
+    text-decoration: none;
+}
+
+
+.header-wrap {
+    position: relative;
+    /*text-align: center;*/
+    color: #fff;
+    font-family: exoregular;
+}
+.home-info-container a {
+    color: inherit;
+}
+.header-wrap h2 {
+    font-size: 42px;
+    margin-top: 50px;
 }
