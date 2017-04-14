@@ -5,11 +5,11 @@ block content
     .content-area.container
         .site-content
             article.post-item
-                .post-image
+                .post-image(style=imgUrl)
                     .info-mask
                         .mask-wrapper
                             h2.post-title
-                                a(href="detail") Hello World!
+                                a(href="detail") #{title}
                             .post-info
                                 span.post-time
-                                    time Apr 14, 2017
+                                    time #{date}

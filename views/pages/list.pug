@@ -13,10 +13,10 @@ block content
                         th 删除
                 tbody
                     //- each item in essay
-                    tr(class="item-id-#{item._id}")
-                        td #{item.title}
-                        td #{item.content}
-                        td: a(target="_blank", href="../essay/#{item._id}") 查看
-                        td: a(target="_blank", href="../admin/update/#{item._id}") 修改
+                    tr(class="item-id-#{_id}")
+                        td #{title}
+                        td #{content}
+                        td: a(target="_blank", href="../essay/#{_id}") 查看
+                        td: a(target="_blank", href="../admin/update/#{_id}") 修改
                         td
                             button.btn.btn-danger.del(type="button", data-id="#{item_id}") 删除

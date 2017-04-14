@@ -4,7 +4,10 @@ var router = express.Router();
 /* GET detail page. */
 router.get('/', function(req, res, next) {
   res.render('detail', {
-      title: 'my first essay',
+      titleImg: 'background-image: url(../../images/space.jpeg)',
+      nextImg: 'background-image: url(../../images/book.jpg)',
+      name: 'Hello World!',
+      small: new Date,
       content: 'please show me something',
     });
 });
