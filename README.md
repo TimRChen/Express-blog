@@ -8,7 +8,7 @@ my item. use express constructor a blog system
 
 ## 当前版本效果图
 
-![关注Timrchen](https://github.com/TimRChen/express-blog/README/20170414_01.png)
-![关注Timrchen](https://github.com/TimRChen/express-blog/README/20170414_02.png)
-![关注Timrchen](https://github.com/TimRChen/express-blog/README/20170414_03.png)
-![关注Timrchen](https://github.com/TimRChen/express-blog/README/20170414_04.png)
+![关注Timrchen](https://github.com/TimRChen/express-blog/tree/master/README/20170414_01.png)
+![关注Timrchen](https://github.com/TimRChen/express-blog/tree/master/README/20170414_02.png)
+![关注Timrchen](https://github.com/TimRChen/express-blog/tree/master/README/20170414_03.png)
+![关注Timrchen](https://github.com/TimRChen/express-blog/tree/master/README/20170414_04.png)
