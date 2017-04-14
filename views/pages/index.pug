@@ -1,9 +1,15 @@
 extends ../layout
 
 block content
-  div.container
-    .title #{title}
-    .content #{content}
-    button.btn
-      a(href="detail") 点击查看文章详情
-    
+  #main.content.homepage
+    .content-area.container
+        .site-content
+            article.post-item
+                .post-image
+                    .info-mask
+                        .mask-wrapper
+                            h2.post-title
+                                a(href="detail") Hello World!
+                            .post-info
+                                span.post-time
+                                    time Apr 14, 2017

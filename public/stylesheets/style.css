@@ -3,14 +3,23 @@
 	text-decoration: none!important;
 }
 
-/* header */
+/* header.pug */
 .banner-mask {
 	background-position: 50%;
 	background-size: cover;
 	position: relative;
 	padding: 20px 0;
-	height: 320px;
+	height: 360px;
 	background-image: url(../images/banner.jpeg);
+}
+.banner-mask:before {
+    position: absolute;
+    background-color: rgba(0,0,0,.15);
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .container {
@@ -39,13 +48,76 @@
 .header-wrap {
     position: relative;
     /*text-align: center;*/
-    color: #fff;
+    /*color: #fff;*/
     font-family: exoregular;
 }
 .home-info-container a {
     color: inherit;
 }
+.home-info-container a:hover {
+    color:#fff;
+}
 .header-wrap h2 {
     font-size: 42px;
     margin-top: 50px;
+}
+
+/* index.pug */
+.site-content {
+    padding-top: 50px;
+}
+.post-item {
+    position: relative;
+    margin-bottom: 30px;
+    background-color: #fff;
+}
+.post-image {
+    display: block;
+    height: 340px;
+    background-size: cover;
+    background-position: 50%;
+
+    /* 背景图应存入数据库! */
+    background-image: url(../images/space.jpeg);
+
+    position: relative;
+}
+.post-item .info-mask {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: transparent -webkit-linear-gradient(top,transparent,rgba(0,0,0,.4)) repeat scroll 0 0;
+    background: transparent linear-gradient(180deg,transparent 0,rgba(0,0,0,.4)) repeat scroll 0 0;
+}
+.info-mask {
+    display: block;
+    padding: 30px;
+}
+.post-item:hover .info-mask {
+    background: transparent -webkit-linear-gradient(top,transparent,rgba(0,0,0,.8)) repeat scroll 0 0;
+    background: transparent linear-gradient(180deg,transparent 0,rgba(0,0,0,.8)) repeat scroll 0 0;
+}
+.mask-wrapper {
+    position: absolute;
+    bottom: 10px;
+    color: #fff;
+    left: 20px;
+    right: 20px;
+}
+.mask-wrapper .post-title {
+    font-size: 36px;
+    line-height: 1.4;
+    color: #fff;
+}
+.mask-wrapper .post-title a:hover {
+    color: #bc403e;
+}
+.mask-wrapper .post-title a {
+    color: inherit;
+}
+.mask-wrapper .post-info {
+    font-size: 14px;
+    font-family: exoregular;
 }
