@@ -22,12 +22,12 @@ block content
                 nav.navigation.post-navigation(role="navigation")
                     h2.screen-reader-text Post navigation
                     .nav-links
-                        .nav-previous(style=titleImg)
+                        .nav-previous(style=poster)
                             a(href="/detail", rel="prev")
                                 span.meta-nav Previous
-                                span.post-title #{name}
+                                span.post-title #{headerTitle}
                         .nav-next(style=nextImg)
                             a(href="/detail", rel="next")
                                 span.meta-nav Next
-                                span.post-title #{name}
+                                span.post-title #{headerTitle}
                 #comments.comments-area

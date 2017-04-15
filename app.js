@@ -1,15 +1,14 @@
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 const index = require('./routes/index');
-const detail = require('./routes/detail');
-const users = require('./routes/users');
-const admin = require('./routes/admin');
-const list = require('./routes/list');
+
+// mongoose.connect('mongodb://localhost/blogDB');
 
 
 const app = express();
@@ -30,10 +29,7 @@ app.use(express.static(path.join(__dirname, 'bower_components')));
 
 // router config
 app.use('/', index);
-app.use('/users', users);
-app.use('/detail', detail);
-app.use('/admin', admin);
-app.use('/admin/list', list);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
