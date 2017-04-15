@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 
+
+// headerTitle 文章标题，用于header
+// title 首页文章标题
 let EssaySchema = new mongoose.Schema({
     title: String,
     headerTitle: String,
@@ -37,12 +40,12 @@ EssaySchema.statics = {
         return this
             .find({})
             .sort('meta.updateAt')
-            exec(cb);
+            .exec(cb);
     },
     findById: function (id, cb) {
         return this
             .findOne({_id: id})
-            exec(cb);
+            .exec(cb);
     },
 };
 
