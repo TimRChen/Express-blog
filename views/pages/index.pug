@@ -4,12 +4,13 @@ block content
   #main.content.homepage
     .content-area.container
         .site-content
+        each item in essays
             article.post-item
-                .post-image(style=imgUrl)
+                .post-image(style=item.poster)
                     .info-mask
                         .mask-wrapper
                             h2.post-title
-                                a(href=`/detail/${id}`) #{title}
+                                a(href=`/detail/${item.id}`) #{item.title}
                             .post-info
                                 span.post-time
-                                    time #{date}
+                                    time #{item.date}

@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 
 // headerTitle 文章标题，用于header
 // title 首页文章标题
-let EssaySchema = new mongoose.Schema({
+let EssaySchema = new Schema({
     title: String,
     headerTitle: String,
     content: String,
@@ -24,30 +25,30 @@ let EssaySchema = new mongoose.Schema({
 });
 
 
-EssaySchema.pre('save', function(next) {
-    if (this.isNew) {
-        this.meta.createAt = this.meta.updateAt = Date.now();
-    } else {
-        this.meta.updateAt = Date.now();
-    }
-    next();
-});
+// EssaySchema.pre('save', function(next) {
+//     if (this.isNew) {
+//         this.meta.createAt = this.meta.updateAt = Date.now();
+//     } else {
+//         this.meta.updateAt = Date.now();
+//     }
+//     next();
+// });
 
 
 
-EssaySchema.statics = {
-    fetch: function (cb) {
-        return this
-            .find({})
-            .sort('meta.updateAt')
-            .exec(cb);
-    },
-    findById: function (id, cb) {
-        return this
-            .findOne({_id: id})
-            .exec(cb);
-    },
-};
+// EssaySchema.statics = {
+//     fetch: function (cb) {
+//         return this
+//             .find({})
+//             .sort('meta.updateAt')
+//             .exec(cb);
+//     },
+//     findById: function (id, cb) {
+//         return this
+//             .findOne({_id: id})
+//             .exec(cb);
+//     },
+// };
 
 
 module.exports = EssaySchema;
