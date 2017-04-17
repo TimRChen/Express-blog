@@ -1,4 +1,5 @@
-header#header.home-header.blog-background.banner-mask(style=poster)
+- style = poster || essay.poster || '';
+header#header.home-header.blog-background.banner-mask(style=style)
     .nav-header.container
         .nav-header-container
             a.back-home(href="/") Home
@@ -6,5 +7,6 @@ header#header.home-header.blog-background.banner-mask(style=poster)
         .container
             .home-info-container
                 a(href="/")
+                    - title = title || essay.title || '';
                     h2 #{title}
                 h4 #{small}

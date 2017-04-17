@@ -1,6 +1,11 @@
 ## Express-blog
 my item. use express constructor a blog system
 
+## 0.0.4 版本
+*   加入MongoDB数据库，实现数据动态增删
+*   数据库与前后端逻辑联调测试
+*   对模板pug文件作了相应的修改
+
 ## 0.0.3 版本
 *   首页多文章结构添加
 *   加入动态脚本动画canvas-nest.js

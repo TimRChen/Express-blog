@@ -6,7 +6,7 @@ block content
             .site-content
                 section.post-content
                     .single-post-inner.grap
-                        p #{content}
+                        p #{essay.content}
                 .post-actions
                     button.wpl-button(data-id="16")
                         span.wpl-text
@@ -22,12 +22,12 @@ block content
                 nav.navigation.post-navigation(role="navigation")
                     h2.screen-reader-text Post navigation
                     .nav-links
-                        .nav-previous(style=poster)
+                        .nav-previous(style=essay.poster)
                             a(href="/detail", rel="prev")
                                 span.meta-nav Previous
-                                span.post-title #{headerTitle}
-                        .nav-next(style=nextImg)
+                                span.post-title #{essay.title}
+                        .nav-next(style=essay.nextImg)
                             a(href="/detail", rel="next")
                                 span.meta-nav Next
-                                span.post-title #{headerTitle}
+                                span.post-title #{essay.nextTitle}
                 #comments.comments-area
