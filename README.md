@@ -27,5 +27,3 @@ my item. use express constructor a blog system
 ## 0.0.3 版本效果图
 
 ![关注Timrchen](https://raw.githubusercontent.com/TimRChen/photoRepo/master/20170417134315.png)
-![关注Timrchen](https://raw.githubusercontent.com/TimRChen/express-blog/master/README/20170414_03.png)
-![关注Timrchen](https://raw.githubusercontent.com/TimRChen/express-blog/master/README/20170414_04.png)
