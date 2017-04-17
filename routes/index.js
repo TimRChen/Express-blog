@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 const moment = require('moment');
 const _ = require('underscore');
-// const mongoose = require('mongoose');
-// const Essay = require('../models/essay');
+const mongoose = require('mongoose');
+const EssayModel = require('../models/essay');
 
-// mongoose.connect('mongodb://localhost/db');
+mongoose.connect('mongodb://localhost:27017/essay');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	// Essay.fetch(function (err, essays) {
+	// EssayModel.fetch(function (err, essays) {
 	// 	if (err) {
 	// 		console.log(err);
 	// 	}
@@ -20,22 +20,22 @@ router.get('/', function(req, res, next) {
 			essays: [{
 				poster: 'background-image: url(../../images/space.jpeg)',
 				title: 'Hello World!',
-				id: 1,
+				_id: 1,
 				date: moment().format("MMM Do YYYY"),
 			}, {
 				poster: 'background-image: url(../../images/banner.jpeg)',
 				title: 'it`s ok!',
-				id: 2,
+				_id: 2,
 				date: moment().format("MMM Do YYYY"),
 			}, {
 				poster: 'background-image: url(../../images/book.jpg)',
 				title: 'this is a test',
-				id: 3,
+				_id: 3,
 				date: moment().format("MMM Do YYYY"),
 			}, {
 				poster: 'background-image: url(../../images/default.jpg)',
 				title: 'hang it on!',
-				id: 4,
+				_id: 4,
 				date: moment().format("MMM Do YYYY"),
 			}],
 		});
@@ -43,10 +43,10 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET detail page. */
-router.get('/detail/:id', function(req, res, next) {
+router.get('/essay/:id', function(req, res, next) {
 	const id = req.params.id;
 
-	// Essay.findById(id, function (err, essay) {
+	// EssayModel.findById(id, function (err, essay) {
 		res.render('detail', {
 			title: 'Hello World!',
 			small: moment().format("MMM Do YYYY"),
@@ -62,9 +62,11 @@ router.get('/admin/essay', function(req, res, next) {
 	res.render('admin', {
 		poster: 'background-image: url(../../images/banner.jpeg)',
 		title: '后台录入页面',
-		essays: {
+		small: '',
+		essay: {
 			title: '',
 			content: '',
+			_id: 110,
 		}
 	});
 });
@@ -74,7 +76,7 @@ router.get('/admin/update/:id', function(req, res) {
 	const id = req.params.id;
 
 	if (id) {
-		// Essay.findById(id, function(err, essay) {
+		// EssayModel.findById(id, function(err, essay) {
 			res.render('admin', {
 				title: 'blog 后台更新页',
 				essay: essay,
@@ -86,13 +88,13 @@ router.get('/admin/update/:id', function(req, res) {
 
 
 /* POST admin essay */
-router.post('/admin/essay/new', function(res, req) {
-	// const id = res.body.essay._id;
-	// const essayObj = req.body.essay;
+router.post('/admin/essay/new', function(req, res) {
+	const id = res.body.essay._id;
+	const essayObj = req.body.essay;
 	// const _essay;
 
 	// if (id !== 'undefined') {
-		// Essay.findById(id, function(err, essay) {
+		// EssayModel.findById(id, function(err, essay) {
 			// if (err) {
 			// 	console.log(err);
 			// }
@@ -103,11 +105,11 @@ router.post('/admin/essay/new', function(res, req) {
 			// 		console.log(err);
 			// 	}
 
-			// 	res.redirect('/essay/' + essay._id);
+			// 	res.redirect('/admin/essay/' + essay._id);
 			// });
 		// });
 	// } else {
-		// _essay = new Essay({
+		// _essay = new EssayModel({
 		// 	title: essayObj.title,
 		// 	headerTitle: essayObj.headerTitle,
 		// 	content: essayObj.content,
@@ -122,20 +124,45 @@ router.post('/admin/essay/new', function(res, req) {
 		// 		console.log(err);
 		// 	}
 
-		// 	res.redirect('/essay/' + essay._id);
+		// 	res.redirect('/admin/essay/' + essay._id);
 		// });
 	// }
 });
 
 /* GET list page. */
 router.get('/admin/list', function(req, res, next) {
-	// Essay.fetch(function(err, essay) {
+	// EssayModel.fetch(function(err, essay) {
 		// if (err) {
 		// 	console.log(err);
 		// }
 		res.render('list', {
 			poster: 'background-image: url(../../images/banner.jpeg)',
-			_id: 10086,
+			title: '文章管理列表',
+			essays: [{
+				poster: 'background-image: url(../../images/space.jpeg)',
+				title: 'Hello World!',
+				content: 'this is a test',
+				_id: 1,
+				date: moment().format("MMM Do YYYY"),
+			}, {
+				poster: 'background-image: url(../../images/banner.jpeg)',
+				title: 'it`s ok!',
+				content: 'this is a test',
+				_id: 2,
+				date: moment().format("MMM Do YYYY"),
+			}, {
+				poster: 'background-image: url(../../images/book.jpg)',
+				title: 'this is a test',
+				content: 'this is a test',
+				_id: 3,
+				date: moment().format("MMM Do YYYY"),
+			}, {
+				poster: 'background-image: url(../../images/default.jpg)',
+				title: 'hang it on!',
+				content: 'this is a test',
+				_id: 4,
+				date: moment().format("MMM Do YYYY"),
+			}],
 		});
 	// });
 });

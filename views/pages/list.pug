@@ -12,11 +12,11 @@ block content
                         th 更新
                         th 删除
                 tbody
-                    //- each item in essay
-                    tr(class=`item-id-${_id}`)
-                        td #{title}
-                        td #{content}
-                        td: a(target="_blank", href=`/admin/essay/${_id}`) 查看
-                        td: a(target="_blank", href=`/admin/update/${_id}`) 修改
-                        td
-                            button.btn.btn-danger.del(type="button", data-id=`${_id}`) 删除
+                    each item in essays
+                        tr(class=`item-id-${item._id}`)
+                            td #{item.title}
+                            td #{item.content}
+                            td: a(target="_blank", href=`/admin/essay/${item._id}`) 查看
+                            td: a(target="_blank", href=`/admin/update/${item._id}`) 编辑
+                            td
+                                button.btn.btn-danger.del(type="button", data-id=`${item._id}`) 删除
