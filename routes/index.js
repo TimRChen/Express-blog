@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 		res.render('index', {
 			title: 'timrchen',
 			small: 'Just a start.',
-			poster: 'background-image: url(../../images/banner.jpeg)',
+			poster: 'background-image: url(/images/banner.jpeg)',
 			essays: essays,
 		});
 	});
@@ -36,7 +36,7 @@ router.get('/essay/:id', function(req, res, next) {
 /* GET admin page. */
 router.get('/admin/essay', function(req, res, next) {
 	res.render('admin', {
-		poster: 'background-image: url(../../images/banner.jpeg)',
+		poster: 'background-image: url(/images/banner.jpeg)',
 		title: '新建文章',
 		essay: {
 			title: '',
@@ -112,7 +112,7 @@ router.get('/admin/list', function(req, res, next) {
 			console.log(err);
 		}
 		res.render('list', {
-			poster: 'background-image: url(../../images/banner.jpeg)',
+			poster: 'background-image: url(/images/banner.jpeg)',
 			title: '文章管理列表',
 			essays: essays,
 		});
