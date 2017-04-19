@@ -1,0 +1,21 @@
+{
+  "name": "express-blog",
+  "description": "blog by Node.js",
+  "main": "",
+  "authors": [
+    "TimRChen <527410313@qq.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/TimRChen/express-blog",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
