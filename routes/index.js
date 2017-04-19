@@ -67,7 +67,7 @@ router.post('/admin/essay/new', function(req, res) {
 	const essayObj = req.body;
 	const id = essayObj._id;
 	let _essay;
-	console.log(essayObj);
+	// console.log(essayObj);
 
 	if (id !== 'undefined') {
 		EssayModel.findById(id, function(err, essay) {
@@ -118,6 +118,22 @@ router.get('/admin/list', function(req, res, next) {
 		});
 	});
 });
+
+// list delete essay
+router.delete('/admin/list', function(req, res, next) {
+	const id = req.query.id;
+
+	if (id) {
+		EssayModel.remove({_id: id}, function(err, essay) {
+			if (err) {
+				console.log(err);
+			} else {
+				res.json({success: 1});
+			}
+		});
+	}
+});
+
 
 
 module.exports = router;
