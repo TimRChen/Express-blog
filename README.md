@@ -1,6 +1,23 @@
 ## Express-blog
 my item. use express constructor a blog system
 
+## 0.0.5 版本
+*   添加图片上传功能
+*   将图片上传路径存入至数据库中
+
+## 0.0.5 bug 
+*   目前上传的图片仅支持原images目录下的图片，其余地址上传的图片均会被以text/html类型来进行解析，解析格式不正确，该问题最后发现是使用 `Multi` 模块时由于`dest`路径未给对，导致了图片引入路径发生错误！已解决！
+*   图片上传解析出问题，最后发现由于enctype采用了"multipart"，我们在app.js中应加入multer插件对multipart格式上传的数据进行解析，否则出现报错！
+
+## Multer 相关说明
+    1.文件上传有以下方法
+        muilter.single(‘file’), //适用于单文件上传
+        muilter.array(‘file’,num), //适用于多文件上传，num为最多上传个数，上传文件的数量可以小于num,
+        muilter.fields(fields), //适用于混合上传，比如A类文件1个，B类文件2个。官方API有详细说明。
+    2.file为上传字段名称，当使用form表单submit方式上传时，必须与表单上传的name属性保持一致。
+        表单记得加上  enctype='multipart/form-data'
+    3.对上传文件大小限制，名称限制等均可在limits中加上，具体可加属性，请参考官方api。
+
 ## 0.0.4 版本
 *   加入MongoDB数据库，实现数据动态增删
 *   数据库与前后端逻辑联调测试

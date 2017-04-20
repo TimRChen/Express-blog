@@ -3,6 +3,9 @@ const router = express.Router();
 const _ = require('underscore');
 const mongoose = require('mongoose');
 const EssayModel = require('../models/essay');
+const fs = require('fs');
+const multer = require('multer');
+
 
 mongoose.connect('mongodb://localhost/essay');
 
@@ -13,6 +16,7 @@ router.get('/', function(req, res, next) {
 		if (err) {
 			console.log(err);
 		}
+		console.log(essays);
 		res.render('index', {
 			title: 'timrchen',
 			small: 'Just a start.',
@@ -34,13 +38,14 @@ router.get('/essay/:id', function(req, res, next) {
 });
 
 /* GET admin page. */
-router.get('/admin/essay', function(req, res, next) {
+router.get('/admin/new', function(req, res, next) {
 	res.render('admin', {
 		poster: 'background-image: url(/images/banner.jpeg)',
 		title: '新建文章',
 		essay: {
 			title: '',
 			content: '',
+			poster: '',
 		}
 	});
 });
@@ -60,14 +65,22 @@ router.get('/admin/update/:id', function(req, res) {
 });
 
 
-// 伪造id数据，后期需要实现动态加id
-let count = 0;
+// for parsing multipart/form-data
+let upload = multer({dest: 'public/images/'});
 /* POST admin essay */
-router.post('/admin/essay/new', function(req, res) {
+router.post('/admin/new', upload.single('poster'), function(req, res) {
 	const essayObj = req.body;
 	const id = essayObj._id;
 	let _essay;
-	// console.log(essayObj);
+	
+	const poster = req.file;	// 由multer解析过来的poster对象
+	console.log(req.file);
+	// 获取上传图片信息
+	let originalName = poster.originalname;
+	let path = `/images/${originalName}`;
+	let changePath = `public\\images\\${originalName}`;
+	fs.renameSync(poster.path, changePath);
+	console.log(path);
 
 	if (id !== 'undefined') {
 		EssayModel.findById(id, function(err, essay) {
@@ -84,7 +97,7 @@ router.post('/admin/essay/new', function(req, res) {
 
 				// 更新后进行重定向，返回到文章详情页
 				res.redirect(`/essay/${essay._id}`);
-			});
+			}); 
 		});
 	} else {
 		// 构建新模型
@@ -92,7 +105,7 @@ router.post('/admin/essay/new', function(req, res) {
 			title: essayObj.title,
 			content: essayObj.content,
 			small: essayObj.small,
-			poster: essayObj.poster,
+			poster: `background-image: url(${path})`,
 			_id: Math.random(),
 		});
 

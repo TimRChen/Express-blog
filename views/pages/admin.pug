@@ -1,19 +1,23 @@
 extends ../layout
 
 block content
-    .container
+    .container.admin
         .row
-            form.form-horizontal(method="post", action="/admin/essay/new")
+            form.form-horizontal(method="post" action="/admin/new" enctype="multipart/form-data")
                 //- 隐藏的表单域，用于存储文章的id
-                input(type="hidden", name="_id", value=`${essay._id}`)
+                input(type="hidden" name="_id" value=`${essay._id}`)
                 .form-group
-                    label.col-sm-3.control-label(for="inputTitle") 文章标题
+                    label.col-sm-2.control-label(for="inputTitle") 文章标题
                     .col-sm-10
-                        input#inputTitle.form-control(type="text", name="title" value=`${essay.title}`)
+                        input#inputTitle.form-control(type="text" name="title" value=`${essay.title}`)
                 .form-group
-                    label.col-sm-3.control-label(for="inputContent") 文章内容
+                    label.col-sm-2.control-label(for="inputContent") 文章内容
                     .col-sm-10
-                        textarea#inputTitle.form-control(type="text", name="content" value=`${essay.content}`)
+                        textarea#inputTitle.form-control(type="text" name="content" value=`${essay.content}`)
                 .form-group
-                    .col-sm-offset-2.col-sm-10
+                    label.col-sm-2.control-label(for="addImg") 添加图片
+                    .col-sm-10
+                        input(type="file" name="poster" value=`${essay.poster}`)
+                .form-group
+                    .col-sm-1
                     button.btn.btn-default(type="submit") 文章录入

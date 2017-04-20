@@ -275,6 +275,11 @@
 }
 
 
+/* admin.pug list.pug */
+.admin, .list {
+    margin-top: 50px;
+}
+
 
 /* footer.pug */
 .site-footer {
