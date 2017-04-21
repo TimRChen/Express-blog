@@ -47,6 +47,15 @@
     border-color: #fff;
 }
 
+.nav-header .nav-header-container .login {
+    position: absolute;
+    right: 0px;
+}
+.nav-header .nav-header-container .signUp {
+    position: absolute;
+    right: 80px;
+}
+
 .header-wrap {
     position: relative;
     /*text-align: center;*/
@@ -63,6 +72,8 @@
     font-size: 42px;
     margin-top: 50px;
 }
+
+
 
 /* index.pug */
 .site-content {

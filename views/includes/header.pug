@@ -1,12 +1,48 @@
-- let style = poster ? poster : essay.poster;
+- 
+    let style = poster ? poster : essay.poster;
 header#header.home-header.blog-background.banner-mask(style=style)
     .nav-header.container
         .nav-header-container
             a.back-home(href="/") Home
+            a.signUp(href="#", data-toggle="modal", data-target="#signupModal") SignUp
+            a.login(href="#", data-toggle="modal", data-target="#signinModal") Login
     .header-wrap
         .container
             .home-info-container
                 a(href="/")
-                    - let trueTitle = title ? title : essay.title;
+                    -
+                        let trueTitle = title ? title : essay.title;
                     h2 #{trueTitle}
                 h4 #{small}
+//- 注册
+#signupModal.modal.fade
+    .modal-dialog
+        .modal-content
+            form(method="post" action="/user/signup")
+                .modal-header SignUp
+                .modal-body
+                    .form-group
+                        label(for="signupName") username
+                        input#signupName.form-control(name="name" type="text")
+                    .form-group
+                        label(for="signupPassword") password
+                        input#signupPassword.form-control(name="password" type="text")
+                .modal-footer
+                    button.btn.btn-default(type="button" data-dismiss="modal") close
+                    button.btn.btn-default(type="submit") submit
+//- 登陆
+#signinModal.modal.fade
+    .modal-dialog
+        .modal-content
+            form(method="post" action="/user/signin")
+                .modal-header Login
+                .modal-body
+                    .form-group
+                        label(for="signinName") username
+                        input#signinName.form-control(name="name" type="text")
+                    .form-group
+                        label(for="signinPassword") password
+                        input#signinPassword.form-control(name="password" type="text")
+                .modal-footer
+                    button.btn.btn-default(type="button" data-dismiss="modal") close
+                    button.btn.btn-default(type="submit") submit

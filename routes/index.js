@@ -3,6 +3,7 @@ const router = express.Router();
 const _ = require('underscore');
 const mongoose = require('mongoose');
 const EssayModel = require('../models/essay');
+const UserModel = require('../models/user');
 const fs = require('fs');
 const multer = require('multer');
 
@@ -26,6 +27,75 @@ router.get('/', function(req, res, next) {
 		});
 	});
 });
+
+/* signUp */
+router.post('/user/signup', function(req, res) {
+	let _user = req.body;
+	
+	UserModel.find({name: _user.name}, function(err, user) {
+		if (err) {
+			console.log(err);
+		}
+
+		// 处理用户名重复
+		if (user) {
+			return res.redirect('/');
+		} else {
+			let user = new UserModel(_user);
+			user.save(function(err, user) {
+				if (err) {
+					console.log(err);
+				}
+				res.redirect('/admin/userList');
+			});
+		}
+	});
+});
+
+
+/* userList page */
+router.get('/admin/userList', function(req, res) {
+	UserModel.fetch(function(err, users) {
+		if (err) {
+			console.log(err);
+		}
+		res.render('userList', {
+			poster: 'background-image: url(/images/book.jpg)',
+			title: '用户列表页',
+			users: users,
+		});
+	});
+});
+
+/* signIn */
+// router.post('/user/signin', function(req, res) {
+// 	let _user = req.body;
+// 	let name = _user.name;
+// 	let password = _user.password;
+
+// 	UserModel.findOne({name: _name}, function(err, user) {
+// 		if (err) {
+// 			console.log(err);
+// 		}
+
+// 		if (!user) {
+// 			return res.redirect('/');
+// 		}
+// 		// 密码校对
+// 		user.comparePassword(password, function(err, isMatch) {
+// 			if (err) {
+// 				console.log(err);
+// 			}
+
+// 			if (isMatch) {
+// 				return res.redirect('/');
+// 			} else {
+// 				console.log('Password is not matched');
+// 			}
+// 		});
+// 	});
+// });
+
 
 /* GET detail page. */
 router.get('/essay/:id', function(req, res, next) {
