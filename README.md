@@ -4,10 +4,14 @@ my item. use express constructor a blog system
 ## 0.0.5 版本
 *   添加图片上传功能
 *   将图片上传路径存入至数据库中
+*   增加grunt自动构建工具
 
 ## 0.0.5 bug 
 *   目前上传的图片仅支持原images目录下的图片，其余地址上传的图片均会被以text/html类型来进行解析，解析格式不正确，该问题最后发现是使用 `Multi` 模块时由于`dest`路径未给对，导致了图片引入路径发生错误！已解决！
 *   图片上传解析出问题，最后发现由于enctype采用了"multipart"，我们在app.js中应加入multer插件对multipart格式上传的数据进行解析，否则出现报错！
+*   数据库报错: DeprecationWarning: Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html 解决: 重点在这一句，赋值一个全局Promise
+mongoose.Promise = global.Promise
+
 
 ## Multer 相关说明
     1.文件上传有以下方法
