@@ -6,7 +6,8 @@ const EssayModel = require('../models/essay');
 const fs = require('fs');
 const multer = require('multer');
 
-
+//重点在这一句，赋值一个全局Promise
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/essay');
 
 
@@ -16,7 +17,7 @@ router.get('/', function(req, res, next) {
 		if (err) {
 			console.log(err);
 		}
-		console.log(essays);
+		// console.log(essays);
 		res.render('index', {
 			title: 'timrchen',
 			small: 'Just a start.',
@@ -97,7 +98,7 @@ router.post('/admin/new', upload.single('poster'), function(req, res) {
 
 				// 更新后进行重定向，返回到文章详情页
 				res.redirect(`/essay/${essay._id}`);
-			}); 
+			});
 		});
 	} else {
 		// 构建新模型
@@ -106,7 +107,7 @@ router.post('/admin/new', upload.single('poster'), function(req, res) {
 			content: essayObj.content,
 			small: essayObj.small,
 			poster: `background-image: url(${path})`,
-			_id: Math.random(),
+			_id: parseInt(Math.random()*100000000000),
 		});
 
 		_essay.save(function(err, essay) {
