@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');   // screat stronger
-const sr = 10;
+const saltRouds = 10;
 
 const Schema = mongoose.Schema;
 
@@ -34,26 +34,24 @@ UserSchema.pre('save', function(next) {
         this.meta.updateAt = Date.now();
     }
     // add salt
-    bcrypt.genSalt(sr, function(err, salt) {
+    bcrypt.genSalt(saltRouds, function(err, salt) {
         if (err) return next(err);
         
         bcrypt.hash(user.password, salt, function(err, hash) {
             if (err) return next(err);
-
-            user.password = hash;
+            user.password = hash;   // 加盐后的密码
             next();
         });
     });
-    next();
 });
 
+// 定义实例方法
 UserSchema.methods = {
     // 密码校对
     comparePassword: function(_password, cb) {
-        bcrypt.compare(_password, this.password, function(err, isMatch) {
+        bcrypt.compare(_password, this.password, function(err, result) {
             if (err) return cb(err);
-
-            cb(null, isMatch);
+            cb(null, result);
         });
     }  
 };

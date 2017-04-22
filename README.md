@@ -1,7 +1,13 @@
 ## Express-blog
 my item. use express constructor a blog system
 
-## 0.0.5 版本
+## 0.0.6 v
+*   增加用户系统 `countinue`
+
+## 0.0.6 bug
+*   密码匹配不一致问题，已解决，由于注册存储`user`变量赋值错误导致 即: `let user`重新声明了变量，导致, `user.save`方法后，导致在数据库创建了一条新表，继而导致了在`bcrpt.compare`时`this.password`取出的加密密码值与登陆输入的密码值`_password`不一致，导致了匹配错误
+
+## 0.0.5 v
 *   添加图片上传功能
 *   将图片上传路径存入至数据库中
 *   增加grunt自动构建工具
@@ -22,25 +28,25 @@ mongoose.Promise = global.Promise
         表单记得加上  enctype='multipart/form-data'
     3.对上传文件大小限制，名称限制等均可在limits中加上，具体可加属性，请参考官方api。
 
-## 0.0.4 版本
+## 0.0.4 v
 *   加入MongoDB数据库，实现数据动态增删
 *   数据库与前后端逻辑联调测试
 *   对模板pug文件作了相应的修改
 
-## 0.0.3 版本
+## 0.0.3 v
 *   首页多文章结构添加
 *   加入动态脚本动画canvas-nest.js
 ![关注Timrchen](https://github.com/TimRChen/photoRepo/blob/master/2017_01.gif)
 
 
-## 0.0.2 版本
+## 0.0.2 v
 *   前后端路由完全打通
 *   前端动态添加文章图片（后期由数据库实现）
 *   完善detail.pug页
 
 ## bug
 *   在给a标签设置href属性时，不能像jade那样使用： a(href="/detail/#{_id}")")
-*   这样的写法是老版本，目前已不再支持! 官方的解释是：This syntax is no longer supported. Alternatives could be found below. Check our migration guide for more information on other incompatibilities between Pug v2 and previous versions.
+*   这样的写法是老v，目前已不再支持! 官方的解释是：This syntax is no longer supported. Alternatives could be found below. Check our migration guide for more information on other incompatibilities between Pug v2 and previous versions.
 *   https://pugjs.org/language/attributes.html 点击链接进行查看
 *   ps: pug 语法上应严格缩进，切记！
 

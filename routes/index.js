@@ -32,16 +32,16 @@ router.get('/', function(req, res, next) {
 router.post('/user/signup', function(req, res) {
 	let _user = req.body;
 	
-	UserModel.find({name: _user.name}, function(err, user) {
+	UserModel.findOne({name: _user.name}, function(err, user) {
 		if (err) {
 			console.log(err);
 		}
 
 		// 处理用户名重复
 		if (user) {
-			return res.redirect('/');
+			res.redirect('/');
 		} else {
-			let user = new UserModel(_user);
+			user = new UserModel(_user);
 			user.save(function(err, user) {
 				if (err) {
 					console.log(err);
@@ -68,33 +68,37 @@ router.get('/admin/userList', function(req, res) {
 });
 
 /* signIn */
-// router.post('/user/signin', function(req, res) {
-// 	let _user = req.body;
-// 	let name = _user.name;
-// 	let password = _user.password;
+router.post('/user/signin', function(req, res) {
+	let _user = req.body;
+	let name = _user.name;
+	let password = _user.password;
 
-// 	UserModel.findOne({name: _name}, function(err, user) {
-// 		if (err) {
-// 			console.log(err);
-// 		}
+	UserModel.findOne({name: name}, function(err, user) {
+		if (err) {
+			console.log(err);
+		}
+		console.log(user);
 
-// 		if (!user) {
-// 			return res.redirect('/');
-// 		}
-// 		// 密码校对
-// 		user.comparePassword(password, function(err, isMatch) {
-// 			if (err) {
-// 				console.log(err);
-// 			}
+		// user不存在，返回首页
+		if (!user) {
+			res.redirect('/');
+		}
+		// 密码校对
+		user.comparePassword(password, function(err, result) {
+			if (err) {
+				console.log(err);
+			}
 
-// 			if (isMatch) {
-// 				return res.redirect('/');
-// 			} else {
-// 				console.log('Password is not matched');
-// 			}
-// 		});
-// 	});
-// });
+			if (result) {
+				console.log('Password is mathched');
+				res.redirect('/');
+			} else {
+				console.log('Password is not matched');
+				res.redirect('/admin/userList');
+			}
+		});
+	});
+});
 
 
 /* GET detail page. */
