@@ -36,6 +36,8 @@ router.get('/', Index.index);
 router.post('/user/signup', User.signup);
 router.get('/admin/userList', User.list);
 router.post('/user/signin', User.signin);
+router.get('/signin', User.showSignin);
+router.get('/signup', User.showSignup);
 router.get('/logout', User.logout);
 
 

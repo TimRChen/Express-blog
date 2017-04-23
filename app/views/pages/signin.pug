@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+    .signinCont
+        .content-area.container
+            .page-header
+                h1= title
+            form(method="post" action="/user/signin")
+                .modal-header Login
+                .modal-body
+                    .form-group
+                        label(for="signinName") username
+                        input#signinName.form-control(name="name" type="text")
+                    .form-group
+                        label(for="signinPassword") password
+                        input#signinPassword.form-control(name="password" type="text")
+                .modal-footer
+                    button.btn.btn-default(type="button" data-dismiss="modal") close
+                    button.btn.btn-default(type="submit") submit

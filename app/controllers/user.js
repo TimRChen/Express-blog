@@ -1,5 +1,21 @@
 const UserModel = require('../models/user');
 
+// showSignup
+exports.showSignup = function(req, res) {
+	res.render('signup', {
+		title: '注册页面',
+		poster: 'background-image: url(/images/book.jpg)',
+	});
+};
+
+// showSignin
+exports.showSignin = function(req, res) {
+	res.render('signin', {
+		title: '登陆页面',
+		poster: 'background-image: url(/images/book.jpg)',
+	});
+};
+
 /* signUp */
 exports.signup = function(req, res) {
 	let _user = req.body;
@@ -10,14 +26,14 @@ exports.signup = function(req, res) {
 		}
 		// 处理用户名重复
 		if (user) {
-			return res.redirect('/');
+			return res.redirect('/signin');
 		} else {
 			user = new UserModel(_user);
 			user.save(function(err, user) {
 				if (err) {
 					console.log(err);
 				}
-				res.redirect('/admin/userList');
+				res.redirect('/');
 			});
 		}
 	});
@@ -34,9 +50,9 @@ exports.signin = function(req, res) {
 		if (err) {
 			console.log(err);
 		}
-		// user不存在，返回首页
+		// user不存在，返回注册页
 		if (!user) {
-			return res.redirect('/');
+			return res.redirect('/signup');
 		}
 		// 密码校对
 		user.comparePassword(password, function(err, result) {
@@ -46,10 +62,11 @@ exports.signin = function(req, res) {
 
 			if (result) {
 				req.session.user = user;
-				console.log('Password is matched');
+				// console.log('Password is matched');
 				return res.redirect('/');
 			} else {
-				console.log('Password is not matched');
+				return res.redirect('/signin');	// 密码不正确，则重定向至登录页
+				// console.log('Password is not matched');
 			}
 		});
 	});

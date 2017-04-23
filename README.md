@@ -3,9 +3,10 @@ my item. use express constructor a blog system
 
 ## 0.0.6 v
 *   增加用户系统 `countinue`
-*   实现`session`持久化
-    * 会话持久化实现
+    *   实现`session`持久化
+    *   会话持久化实现
 *   文件结构调整，MVC分离理念
+*   增加注册，登录页面
 
 ## 0.0.6 bug
 *   密码匹配不一致问题，已解决，由于注册存储`user`变量赋值错误导致 即: `let user`重新声明了变量，导致, `user.save`方法后，导致在数据库创建了一条新表，继而导致了在`bcrpt.compare`时`this.password`取出的加密密码值与登陆输入的密码值`_password`不一致，导致了匹配错误
