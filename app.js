@@ -4,38 +4,22 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const session = require('express-session');
-const mongoStore = require('connect-mongo')(session);
-const dbUrl = 'mongodb://localhost/essay';
-
+const routes = require('./routes/index');
 const app = express();
 
-const index = require('./routes/index');
-
 // view engine setup
-app.set('views', path.join(__dirname, 'views/pages'));
+app.set('views', path.join(__dirname, '/app/views/pages'));
 app.set('view engine', 'pug');
-
-// uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(session({
-    secret: 'essay',
-    store: new mongoStore({
-        url: dbUrl,
-        collection: 'sessions'
-    })
-}));
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(cookieParser());
 app.locals.moment = require('moment');
 
 // router config
-app.use('/', index);
-
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
