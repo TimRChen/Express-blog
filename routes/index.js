@@ -11,11 +11,21 @@ const multer = require('multer');
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/essay');
 
+// pre handle user
+router.use(function(req, res, next) {
+	let _user = req.session.user;
+	if (_user) {
+		res.locals.user = _user;
+	}
+	next();
+});
+
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
 	console.log('user in session: ');
 	console.log(req.session.user);
+
 	EssayModel.fetch(function (err, essays) {
 		if (err) {
 			console.log(err);
@@ -29,6 +39,7 @@ router.get('/', function(req, res, next) {
 		});
 	});
 });
+
 
 /* signUp */
 router.post('/user/signup', function(req, res) {
@@ -68,7 +79,8 @@ router.get('/admin/userList', function(req, res) {
 	});
 });
 
-/* signIn */
+
+/* Login */
 router.post('/user/signin', function(req, res) {
 	let _user = req.body;
 	let name = _user.name;
@@ -100,6 +112,13 @@ router.post('/user/signin', function(req, res) {
 });
 
 
+/* logout */
+router.get('/logout', function(req, res) {
+	delete req.session.user;
+	res.redirect('/');
+});
+
+
 /* GET detail page. */
 router.get('/essay/:id', function(req, res, next) {
 	const id = req.params.id;
@@ -110,6 +129,7 @@ router.get('/essay/:id', function(req, res, next) {
 		});
 	});
 });
+
 
 /* GET admin page. */
 router.get('/admin/new', function(req, res, next) {
@@ -123,6 +143,7 @@ router.get('/admin/new', function(req, res, next) {
 		}
 	});
 });
+
 
 /* Edit/Update admin essay */
 router.get('/admin/update/:id', function(req, res) {

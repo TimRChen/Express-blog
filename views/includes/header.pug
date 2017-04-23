@@ -1,17 +1,19 @@
-- 
-    let style = poster ? poster : essay.poster;
+- let style = poster ? poster : essay.poster;
 header#header.home-header.blog-background.banner-mask(style=style)
     .nav-header.container
         .nav-header-container
             a.back-home(href="/") Home
-            a.signUp(href="#", data-toggle="modal", data-target="#signupModal") SignUp
-            a.login(href="#", data-toggle="modal", data-target="#signinModal") Login
+            - if (user)
+                span 欢迎您, ${user.name}
+                a.logout(href="/logout") Logout
+            - else 
+                a.signUp(href="#", data-toggle="modal", data-target="#signupModal") SignUp
+                a.login(href="#", data-toggle="modal", data-target="#signinModal") Login
     .header-wrap
         .container
             .home-info-container
                 a(href="/")
-                    -
-                        let trueTitle = title ? title : essay.title;
+                    - let trueTitle = title ? title : essay.title;
                     h2 #{trueTitle}
                 h4 #{small}
 //- 注册

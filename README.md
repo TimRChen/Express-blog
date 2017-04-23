@@ -4,6 +4,7 @@ my item. use express constructor a blog system
 ## 0.0.6 v
 *   增加用户系统 `countinue`
 *   实现`session`持久化
+    * 会话持久化实现
 
 ## 0.0.6 bug
 *   密码匹配不一致问题，已解决，由于注册存储`user`变量赋值错误导致 即: `let user`重新声明了变量，导致, `user.save`方法后，导致在数据库创建了一条新表，继而导致了在`bcrpt.compare`时`this.password`取出的加密密码值与登陆输入的密码值`_password`不一致，导致了匹配错误
@@ -18,7 +19,6 @@ my item. use express constructor a blog system
 *   图片上传解析出问题，最后发现由于enctype采用了"multipart"，我们在app.js中应加入multer插件对multipart格式上传的数据进行解析，否则出现报错！
 *   数据库报错: DeprecationWarning: Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html 解决: 重点在这一句，赋值一个全局Promise
 mongoose.Promise = global.Promise
-
 
 ## Multer 相关说明
     1.文件上传有以下方法
@@ -39,19 +39,17 @@ mongoose.Promise = global.Promise
 *   加入动态脚本动画canvas-nest.js
 ![关注Timrchen](https://github.com/TimRChen/photoRepo/blob/master/2017_01.gif)
 
+## 0.0.3 版本效果图
+
+![关注Timrchen](https://raw.githubusercontent.com/TimRChen/photoRepo/master/20170417134315.png)
 
 ## 0.0.2 v
 *   前后端路由完全打通
 *   前端动态添加文章图片（后期由数据库实现）
 *   完善detail.pug页
 
-## bug
+## 0.0.2 bug
 *   在给a标签设置href属性时，不能像jade那样使用： a(href="/detail/#{_id}")")
 *   这样的写法是老v，目前已不再支持! 官方的解释是：This syntax is no longer supported. Alternatives could be found below. Check our migration guide for more information on other incompatibilities between Pug v2 and previous versions.
 *   https://pugjs.org/language/attributes.html 点击链接进行查看
 *   ps: pug 语法上应严格缩进，切记！
-
-
-## 0.0.3 版本效果图
-
-![关注Timrchen](https://raw.githubusercontent.com/TimRChen/photoRepo/master/20170417134315.png)
