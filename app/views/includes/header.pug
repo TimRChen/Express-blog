@@ -4,7 +4,7 @@ header#header.home-header.blog-background.banner-mask(style=style)
         .nav-header-container
             a.back-home(href="/") Home
             - if (user)
-                span 欢迎您, #{user.name} 
+                span.tips 欢迎您, #{user.name} 
                 a.logout(href="/logout") Logout
             - else 
                 a.signUp(href="#", data-toggle="modal", data-target="#signupModal") SignUp

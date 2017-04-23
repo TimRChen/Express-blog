@@ -51,9 +51,22 @@
     position: absolute;
     right: 0px;
 }
+
+.nav-header .nav-header-container .tips {
+    position: absolute;
+    right: 110px;
+    color: #fff;
+    font-size: 16px;
+}
+
 .nav-header .nav-header-container .signUp {
     position: absolute;
     right: 80px;
+}
+
+.nav-header .nav-header-container .logout {
+    position: absolute;
+    right: 0px;
 }
 
 .header-wrap {
