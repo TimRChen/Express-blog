@@ -33,13 +33,12 @@ UserSchema.pre('save', function(next) {
     } else {
         this.meta.updateAt = Date.now();
     }
-    // add salt
+
     bcrypt.genSalt(saltRouds, function(err, salt) {
         if (err) return next(err);
-        
         bcrypt.hash(user.password, salt, function(err, hash) {
             if (err) return next(err);
-            user.password = hash;   // 加盐后的密码
+            user.password = hash;
             next();
         });
     });

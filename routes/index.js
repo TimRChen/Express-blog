@@ -7,13 +7,15 @@ const UserModel = require('../models/user');
 const fs = require('fs');
 const multer = require('multer');
 
-//重点在这一句，赋值一个全局Promise
+// 赋值一个全局Promise
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/essay');
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+	console.log('user in session: ');
+	console.log(req.session.user);
 	EssayModel.fetch(function (err, essays) {
 		if (err) {
 			console.log(err);
@@ -36,10 +38,9 @@ router.post('/user/signup', function(req, res) {
 		if (err) {
 			console.log(err);
 		}
-
 		// 处理用户名重复
 		if (user) {
-			res.redirect('/');
+			return res.redirect('/');
 		} else {
 			user = new UserModel(_user);
 			user.save(function(err, user) {
@@ -77,11 +78,9 @@ router.post('/user/signin', function(req, res) {
 		if (err) {
 			console.log(err);
 		}
-		console.log(user);
-
 		// user不存在，返回首页
 		if (!user) {
-			res.redirect('/');
+			return res.redirect('/');
 		}
 		// 密码校对
 		user.comparePassword(password, function(err, result) {
@@ -90,11 +89,11 @@ router.post('/user/signin', function(req, res) {
 			}
 
 			if (result) {
-				console.log('Password is mathched');
-				res.redirect('/');
+				req.session.user = user;
+				console.log('Password is matched');
+				return res.redirect('/');
 			} else {
 				console.log('Password is not matched');
-				res.redirect('/admin/userList');
 			}
 		});
 	});
