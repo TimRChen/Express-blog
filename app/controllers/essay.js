@@ -126,14 +126,17 @@ exports.list = function(req, res, next) {
 // list delete essay
 exports.delete = function(req, res, next) {
 	const id = req.query.id;
-
 	if (id) {
-		EssayModel.remove({_id: id}, function(err, essay) {
+		EssayModel.findById({_id: id}, function(err, essay) {
 			if (err) {
 				console.log(err);
-			} else {
-				res.json({success: 1});
 			}
+			let poster = essay.poster;
+			let path = poster.slice(23).replace(')', '');
+			// 删除相应的图片
+			fs.unlinkSync(`public/${path}`);
+			// 删除文章内容
+			essay.remove();
 		});
 	}
 };

@@ -4,6 +4,9 @@ my item. use express constructor a blog system
 ## 0.0.7 v
 *   增加`markdown`文本编辑器
 *   在`textarea`中实现Tab键缩进
+*   修复删除文章功能
+    *   实现了删除文章，文章标题图片
+
 ![关注Timrchen](https://github.com/TimRChen/photoRepo/blob/master/2017_02.gif)
 
 ## 0.0.6 v
