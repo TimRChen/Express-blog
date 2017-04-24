@@ -20,7 +20,7 @@ header#header.home-header.blog-background.banner-mask(style=style)
 #signupModal.modal.fade
     .modal-dialog
         .modal-content
-            form(method="post" action="/user/signup")
+            form(method="post" action="/user/signup" AUTOCOMPLETE="OFF")
                 .modal-header SignUp
                 .modal-body
                     .form-group
@@ -36,7 +36,7 @@ header#header.home-header.blog-background.banner-mask(style=style)
 #signinModal.modal.fade
     .modal-dialog
         .modal-content
-            form(method="post" action="/user/signin")
+            form(method="post" action="/user/signin" AUTOCOMPLETE="OFF")
                 .modal-header Login
                 .modal-body
                     .form-group
