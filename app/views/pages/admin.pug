@@ -34,4 +34,17 @@ block content
         let $ = function(id) {
             return document.getElementById(id);
         };
-        new Editor($("inputContent"), $("preview"));
+        new Editor($("inputContent"), $("preview")); //- 执行输入转换
+        //- 在 textarea 中实现Tab键缩进
+        $("inputContent").onkeydown = function(e){
+            if(e.keyCode == 9){
+                e.preventDefault();
+                let indent = '    ';
+                let start = this.selectionStart;
+                let end = this.selectionEnd;
+                let selected = window.getSelection().toString();
+                selected = indent + selected.replace(/\n/g, '\n'+indent);
+                this.value = this.value.substring(0, start) + selected + this.value.substring(end);
+                this.setSelectionRange(start + indent.length, start + selected.length);
+            }
+        };
