@@ -1,6 +1,10 @@
 ## Express-blog
 my item. use express constructor a blog system
 
+## 0.0.7 v
+*   增加`markdown`文本编辑器
+![关注Timrchen](https://github.com/TimRChen/photoRepo/blob/master/2017_02.gif)
+
 ## 0.0.6 v
 *   增加用户系统 `countinue`
     *   实现`session`持久化

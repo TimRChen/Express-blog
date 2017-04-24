@@ -314,3 +314,7 @@
 .u-textAlignCenter {
     text-align: center;
 }
+
+canvas {
+    opacity: 0.1!important;
+}
