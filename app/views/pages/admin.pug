@@ -3,7 +3,7 @@ extends ../layout
 block content
     .container.admin
         .row
-            form.form-horizontal(method="post" action="/admin/new" enctype="multipart/form-data")
+            form.form-horizontal(method="post" action="/admin/essay" enctype="multipart/form-data")
                 //- 隐藏的表单域，用于存储文章的id
                 input(type="hidden" name="_id" value=`${essay._id}`)
                 .form-group

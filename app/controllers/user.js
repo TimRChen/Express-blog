@@ -93,3 +93,25 @@ exports.list = function(req, res) {
 		});
 	});
 };
+
+/* middleware for user */
+exports.signinRequired = function(req, res, next) {
+	let user = req.session.user;
+	console.log(user);
+
+	if (!user) {
+		return res.redirect('/signin');
+	}
+
+	next();
+};
+
+/* middleware for admin */
+exports.adminRequired = function(req, res, next) {
+	let user = req.session.user;
+	if (user.role <= 10) {
+		return res.redirect('/');
+	}
+
+	next();
+};

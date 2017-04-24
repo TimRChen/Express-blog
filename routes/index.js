@@ -34,20 +34,20 @@ router.get('/', Index.index);
 
 /* User */
 router.post('/user/signup', User.signup);
-router.get('/admin/userList', User.list);
 router.post('/user/signin', User.signin);
 router.get('/signin', User.showSignin);
 router.get('/signup', User.showSignup);
 router.get('/logout', User.logout);
+router.get('/admin/user/list', User.signinRequired, User.adminRequired, User.list);
 
 
 /* Essay */
 router.get('/essay/:id', Essay.detail);
-router.get('/admin/new', Essay.new);
-router.get('/admin/update/:id', Essay.update);
-router.post('/admin/new', Essay.save);
-router.get('/admin/list', Essay.list);
-router.delete('/admin/list', Essay.delete);
+router.get('/admin/essay/new', User.signinRequired, User.adminRequired, Essay.new);
+router.post('/admin/essay', User.signinRequired, User.adminRequired, Essay.save);
+router.get('/admin/essay/update/:id', User.signinRequired, User.adminRequired, Essay.update);
+router.get('/admin/essay/list', User.signinRequired, User.adminRequired, Essay.list);
+router.delete('/admin/essay/list', User.signinRequired, User.adminRequired, Essay.delete);
 
 
 module.exports = router;

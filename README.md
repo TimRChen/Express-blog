@@ -1,7 +1,8 @@
 ## Express-blog
-my item. use express constructor a blog system
+***
 
 ## 0.0.7 v
+*   增加用户权限
 *   增加`markdown`文本编辑器
 *   在`textarea`中实现Tab键缩进
 *   修复删除文章功能

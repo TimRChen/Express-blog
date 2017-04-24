@@ -55,7 +55,6 @@ exports.save = function(req, res) {
 		const id = essayObj._id;
 		let _essay;
 
-		console.log(id);
         if (err) {
             console.log(err);
         }

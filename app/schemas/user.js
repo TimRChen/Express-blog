@@ -13,6 +13,11 @@ let UserSchema = new Schema({
         unique: true,
         type: String,
     },
+    // user|verify user|pro user:0|1|2, admin: >10, superAdmin: >50
+    role: {
+        type: Number,
+        default: 0,
+    },
     meta: {
         createAt: {
             type: Date,
