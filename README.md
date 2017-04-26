@@ -1,6 +1,12 @@
 ## Express-blog
 ***
 
+## 0.0.8 v
+*   增加评论功能`countinue`
+
+## 0.0.8 bug
+*   添加用户评论时，会报出MongooseError: CommentModel validation failed的错误，目前在排查问题原因
+
 ## 0.0.7 v
 *   增加用户权限
 *   增加`markdown`文本编辑器

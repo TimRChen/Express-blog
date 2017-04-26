@@ -6,6 +6,7 @@ const dbUrl = 'mongodb://localhost/essay';
 const Index = require('../app/controllers/index');
 const User = require('../app/controllers/user');
 const Essay = require('../app/controllers/essay');
+const Comment = require('../app/controllers/comment');
 
 mongoose.Promise = global.Promise;  // 赋值一个全局Promise
 mongoose.connect('mongodb://localhost/essay');
@@ -48,6 +49,10 @@ router.post('/admin/essay', User.signinRequired, User.adminRequired, Essay.save)
 router.get('/admin/essay/update/:id', User.signinRequired, User.adminRequired, Essay.update);
 router.get('/admin/essay/list', User.signinRequired, User.adminRequired, Essay.list);
 router.delete('/admin/essay/list', User.signinRequired, User.adminRequired, Essay.delete);
+
+/* Comment */
+router.post('/user/comment', User.signinRequired, Comment.save);
+
 
 
 module.exports = router;
