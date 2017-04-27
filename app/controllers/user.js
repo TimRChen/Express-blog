@@ -103,7 +103,7 @@ exports.delete = function(req, res, next) {
 				console.log(err);
 			}
 			// 删除文章内容
-			user.remove(function(err, user) {
+			user.remove(function(err) {
 				if (err) {
 					console.log(err);
 					res.json({success: 0});

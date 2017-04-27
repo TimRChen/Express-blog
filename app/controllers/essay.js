@@ -140,7 +140,7 @@ exports.delete = function(req, res, next) {
 			// 删除相应的图片
 			fs.unlinkSync(`public/${path}`);
 			// 删除文章内容
-			essay.remove(function(err, essay) {
+			essay.remove(function(err) {
 				if (err) {
 					console.log(err);
 					res.json({success: 0});
