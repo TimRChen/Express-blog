@@ -8,7 +8,10 @@ let EssaySchema = new Schema({
     small: String,
     poster: String,
     _id: Number,
-    comments: [{type: ObjectId, ref: 'CommentModel'}],
+    pv: {
+        type: Number,
+        default: 0
+    },
     meta: {
         createAt: {
             type: Date,

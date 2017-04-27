@@ -94,6 +94,28 @@ exports.list = function(req, res) {
 	});
 };
 
+// list delete user
+exports.delete = function(req, res, next) {
+	const id = req.query.id;
+	if (id) {
+		UserModel.findById({_id: id}, function(err, user) {
+			if (err) {
+				console.log(err);
+			}
+			// 删除文章内容
+			user.remove(function(err, user) {
+				if (err) {
+					console.log(err);
+					res.json({success: 0});
+				} else {
+					res.json({success: 1});
+				}
+			});
+		});
+	}
+};
+
+
 /* middleware for user */
 exports.signinRequired = function(req, res, next) {
 	let user = req.session.user;

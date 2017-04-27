@@ -9,6 +9,7 @@ block content
                         th 文章标题
                         th 文章内容
                         th 录入时间
+                        th 访问量
                         th 查看
                         th 更新
                         th 删除
@@ -18,6 +19,7 @@ block content
                             td #{item.title}
                             td #{item.content}
                             td #{moment(item.meta.createAt).format('MM/DD/YYYY')}
+                            td #{item.pv}
                             td: a(target="_blank", href=`/essay/${item._id}`) 查看
                             td: a(target="_blank", href=`/admin/update/${item._id}`) 编辑
                             td
