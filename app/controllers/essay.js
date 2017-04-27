@@ -67,7 +67,7 @@ exports.save = function(req, res) {
         console.log(req.file);
         // 获取上传图片信息
         let originalName = poster.originalname;
-        let changePath = `public\\images\\${originalName}`;
+        let changePath = `public/images/${originalName}`;
         let path = `/images/${originalName}`;
 		// 更改上传文件路径
         fs.renameSync(poster.path, changePath);
