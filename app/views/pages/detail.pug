@@ -31,12 +31,16 @@ block content
                                 span.meta-nav Next
                                 span.post-title #{essay.nextTitle}
                 #comments.comments-area
-                    form(method="post" action="/user/comment")
-                        input(type="hidden" name="essay" value=essay._id)
-                        input(type="hidden" name="from" value=user._id)
-                        .form-group
-                            textarea.form-control(name="content" row="3")
-                        button.btn.btn-primary(type="submit") 提交
+                    //- UY BEGIN
+                    div(id="uyan_frame")
+                    script(type="text/javascript" src="http://v2.uyan.cc/code/uyan.js")
+                    //- UY END
+                    //- form(method="post" action="/user/comment")
+                    //-     input(type="hidden" name="essay" value=essay._id)
+                    //-     input(type="hidden" name="from" value=user._id)
+                    //-     .form-group
+                    //-         textarea.form-control(name="content" row="3")
+                    //-     button.btn.btn-primary(type="submit") 提交
     //- Markdown 文本转换
     script.
         function Show(view) {

@@ -11,7 +11,6 @@ exports.save = function(req, res) {
         if (err) {
             console.log(err);
         }
-        console.log(comment);
         res.redirect(`/essay/${essayId}`);
     });
 };

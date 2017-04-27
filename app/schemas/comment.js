@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.Types.ObjectId;
 
 let CommentSchema = new Schema({
-    essay: {type: ObjectId, ref: 'Essay'},
-    from: {type: ObjectId, ref: 'User'},
-    to: {type: ObjectId, ref: 'User'},
+    essay: {type: ObjectId, ref: 'EssayModel'},
+    from: {type: ObjectId, ref: 'UserModel'},
+    to: {type: ObjectId, ref: 'UserModel'},
     content: String,
     meta: {
         createAt: {

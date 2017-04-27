@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const ObjectId = Schema.Types.ObjectId;
 
 let EssaySchema = new Schema({
     title: String,
@@ -7,6 +8,7 @@ let EssaySchema = new Schema({
     small: String,
     poster: String,
     _id: Number,
+    comments: [{type: ObjectId, ref: 'CommentModel'}],
     meta: {
         createAt: {
             type: Date,
