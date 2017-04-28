@@ -6,7 +6,7 @@
 *   部署上线`continue`
 
 ## 0.0.9 bug
-*   部署bug—— fs.rename方法在linux下无法更改文件名
+*   部署bug—— fs.rename方法在linux下无法更改文件名`已修复`
 
 ## 0.0.8 v
 *   增加评论功能`fail`
@@ -23,7 +23,7 @@
 ![关注Timrchen](https://github.com/TimRChen/photoRepo/blob/master/2017_02.gif)
 
 ## 0.0.6 v
-*   增加用户系统 `countinue`
+*   增加用户系统
     *   实现`session`持久化
     *   会话持久化实现
 *   文件结构调整，MVC分离理念
@@ -45,8 +45,8 @@ mongoose.Promise = global.Promise
 
 ## Multer 相关说明
     1.文件上传有以下方法
-        muilter.single(‘file’), //适用于单文件上传
-        muilter.array(‘file’,num), //适用于多文件上传，num为最多上传个数，上传文件的数量可以小于num,
+        muilter.single('file'), //适用于单文件上传
+        muilter.array('file',num), //适用于多文件上传，num为最多上传个数，上传文件的数量可以小于num,
         muilter.fields(fields), //适用于混合上传，比如A类文件1个，B类文件2个。官方API有详细说明。
     2.file为上传字段名称，当使用form表单submit方式上传时，必须与表单上传的name属性保持一致。
         表单记得加上  enctype='multipart/form-data'
