@@ -52,7 +52,8 @@ exports.signin = function(req, res) {
 		}
 		// user不存在，返回注册页
 		if (!user) {
-			return res.redirect('/signup');
+			// return res.redirect('/signup');
+			return res.redirect('/');
 		}
 		// 密码校对
 		user.comparePassword(password, function(err, result) {

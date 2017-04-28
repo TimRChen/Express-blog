@@ -33,10 +33,10 @@ router.get('/', Index.index);
 
 
 /* User */
-router.post('/user/signup', User.signup);
+// router.post('/user/signup', User.signup);
 router.post('/user/signin', User.signin);
 router.get('/signin', User.showSignin);
-router.get('/signup', User.showSignup);
+// router.get('/signup', User.showSignup);
 router.get('/logout', User.logout);
 router.get('/admin/user/list', User.signinRequired, User.adminRequired, User.list);
 router.delete('/admin/user/list', User.signinRequired, User.adminRequired, User.delete);
