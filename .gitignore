@@ -3,3 +3,5 @@ node_modules
 gruntfile.js
 
 test
+
+public/libs
