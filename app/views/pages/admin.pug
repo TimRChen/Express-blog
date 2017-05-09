@@ -13,7 +13,7 @@ block content
                 .form-group
                     label.col-sm-2.control-label(for="inputContent") 文章内容
                     .col-sm-10
-                        textarea#inputContent.form-control(oninput="this.editor.update()" type="text" name="content" rows="6" placeholder=" Type **Markdown** here." autofocus) #{essay.content}
+                        textarea#inputContent.form-control(oninput="this.editor.update()" type="text" name="content" rows="6" cols="30" wrap="hard" placeholder=" Type **Markdown** here." autofocus) #{essay.content}
                         #preview
                 .form-group
                         label.col-sm-2.control-label(for="addImg") 添加图片
