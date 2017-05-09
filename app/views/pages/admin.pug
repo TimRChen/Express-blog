@@ -9,16 +9,16 @@ block content
                 .form-group
                     label.col-sm-2.control-label(for="inputTitle") 文章标题
                     .col-sm-10
-                        input#inputTitle.form-control(type="text" name="title" value=`${essay.title}`)
+                        input#inputTitle.form-control(type="text" name="title" placeholder="Type header" value=`${essay.title}`)
                 .form-group
                     label.col-sm-2.control-label(for="inputContent") 文章内容
                     .col-sm-10
-                        textarea#inputContent.form-control(oninput="this.editor.update()" type="text" name="content" value=`${essay.content}` rows="6" cols="60") Type **Markdown** here.
+                        textarea#inputContent.form-control(oninput="this.editor.update()" type="text" name="content" rows="6" placeholder=" Type **Markdown** here." autofocus) #{essay.content}
                         #preview
                 .form-group
-                    label.col-sm-2.control-label(for="addImg") 添加图片
-                    .col-sm-10
-                        input(type="file" name="poster" value=`${essay.poster}`)
+                        label.col-sm-2.control-label(for="addImg") 添加图片
+                        .col-sm-10
+                            input(type="file" name="poster" value=`${essay.poster}`)
                 .form-group
                     .col-sm-1
                     button.btn.btn-default(type="submit") 文章录入
@@ -31,9 +31,7 @@ block content
             input.editor = this;
             this.update();
         }
-        let $ = function(id) {
-            return document.getElementById(id);
-        };
+        let $ = id => document.getElementById(id);
         new Editor($("inputContent"), $("preview")); //- 执行输入转换
         //- 在 textarea 中实现Tab键缩进
         $("inputContent").onkeydown = function(e){

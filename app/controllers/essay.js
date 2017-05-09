@@ -42,7 +42,7 @@ exports.update = function(req, res) {
 	if (id) {
 		EssayModel.findById(id, function(err, essay) {
 			res.render('admin', {
-				title: 'blog 后台更新页',
+				title: '文章编辑',
 				essay: essay,
 			});
 		});
