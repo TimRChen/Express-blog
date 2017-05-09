@@ -63,11 +63,11 @@ exports.signin = function(req, res) {
 
 			if (result) {
 				req.session.user = user;
-				// console.log('Password is matched');
+				console.log('Password is matched');
 				return res.redirect('/');
 			} else {
+				console.log('Password is not matched');
 				return res.redirect('/signin');	// 密码不正确，则重定向至登录页
-				// console.log('Password is not matched');
 			}
 		});
 	});

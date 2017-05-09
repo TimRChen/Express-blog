@@ -6,9 +6,23 @@ header#header.home-header.blog-background.banner-mask(style=style)
             - if (user)
                 span.tips 欢迎您, #{user.name} 
                 a.logout(href="/logout") Logout
+                .btn-group
+                    a.btn.dropdown-toggle(data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Admin 
+                        span.caret
+                    ul.dropdown-menu
+                        li.dropdown-header  essay
+                        li
+                            a(href="/admin/essay/new") Edit essay
+                        li
+                            a(href="/admin/essay/list") essay list
+                        li.divider(role="separator")
+                        li.dropdown-header  user
+                        li
+                            a(href="/admin/user/list") user group
             - else 
                 //- a.signUp(href="#", data-toggle="modal", data-target="#signupModal") SignUp
                 a.login(href="#", data-toggle="modal", data-target="#signinModal") Login
+
     .header-wrap
         .container
             .home-info-container

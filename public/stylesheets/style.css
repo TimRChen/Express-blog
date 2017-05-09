@@ -34,13 +34,19 @@
 }
 .nav-header .nav-header-container a {
     display: inline-block;
-    border: 1px solid hsla(0,0%,100%,.8);
+    border: 1px solid hsla(0, 0%, 100%, .8);
     color: hsla(0,0%,100%,.8);
     font-size: 14px;
     padding: 3px 12px;
     border-radius: 3px;
     margin-right: 8px;
     text-decoration: none;
+}
+.nav-header .nav-header-container .dropdown-menu, .nav-header .nav-header-container .dropdown-menu a{
+    color: #000;
+}
+.nav-header .nav-header-container .dropdown-menu, .nav-header .nav-header-container .dropdown-menu a:hover {
+    color: #000;
 }
 .nav-header .nav-header-container a:hover {
     color: #fff;
