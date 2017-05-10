@@ -3,9 +3,12 @@ const EssayModel = require('../models/essay');
 
 // index page
 exports.index = function(req, res, next) {
-	console.log(req.session.user);
+	console.log(`
+	***Welcome you ${req.session.user.name}***
+	`);
 
-	EssayModel.fetch(function(err, essays) {
+	let pageSize = 8;
+	EssayModel.fetch(pageSize, function(err, essays) {
 		if (err) {
 			console.log(err);
 		}
@@ -22,18 +25,16 @@ exports.index = function(req, res, next) {
 // next page
 exports.next = function(req, res, next) {
 
-    let page;
+    let page = 1;
+	let pageSize = 8;
 	let originPage = req.path;
-	console.log(`originPage is :   ${originPage}`)
 	if (originPage === '/next') {
-		page = 2;
+		page++;
 	}
 
-	console.log(`the request is ${page}`);
+	console.log(`the page is ${page}`);
 
-	
-
-	EssayModel.queryNextEssays(page, 1, function(err, essays) {
+	EssayModel.queryNextEssays(page, pageSize, function(err, essays) {
 		if (err) {
 			console.log(err);
 		}
@@ -43,23 +44,21 @@ exports.next = function(req, res, next) {
 			poster: 'background-image: url(/images/banner.jpeg)',
 			essays: essays,
 		});
-		console.log('12312312312: ' + essays);
 	});
 };
 
 // previous page
 exports.preious = function(req, res, next) {
 
-    let page = 0;
+    let page = 1;
 	let originPage = req.path;
-	console.log(`originPage is :   ${originPage}`)
 	if (originPage === '/previous') {
-		page = 2;
+		page++;
 	}
 	console.log(`the request is ${page}`);
+	let pageSize = 1;
 
-
-	EssayModel.queryLastEssays(page, 1, function(err, essays) {
+	EssayModel.queryLastEssays(page, pageSize, function(err, essays) {
 		if (err) {
 			console.log(err);
 		}
@@ -69,6 +68,5 @@ exports.preious = function(req, res, next) {
 			poster: 'background-image: url(/images/banner.jpeg)',
 			essays: essays,
 		});
-		console.log('12312312312: ' + essays);
 	});
 };

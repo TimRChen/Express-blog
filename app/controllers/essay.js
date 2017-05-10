@@ -96,8 +96,7 @@ exports.save = function(req, res) {
 				title: essayObj.title,
 				content: essayObj.content,
 				small: essayObj.small,
-				poster: `background-image: url(${path})`,
-				_id: parseInt(Math.random()*100000000000),
+				poster: `background-image: url(${path})`
 			});
 
 			_essay.save(function(err, essay) {

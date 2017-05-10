@@ -7,7 +7,6 @@ let EssaySchema = new Schema({
     content: String,
     small: String,
     poster: String,
-    _id: Number,
     pv: {
         type: Number,
         default: 0
@@ -37,11 +36,11 @@ EssaySchema.pre('save', function(next) {
 
 // 定义静态方法
 EssaySchema.statics = {
-    fetch: function (cb) {
+    fetch: function (pageSize, cb) {
         return this
             .find({})   // 取出所有数据
             .sort({"meta.createAt": -1})
-            .limit(5)
+            .limit(pageSize)
             .exec(cb);
     },
     findById: function (id, cb) {
@@ -54,7 +53,7 @@ EssaySchema.statics = {
             .find({})
             .sort({"meta.createAt": -1})
             .skip(pageSize*(page - 1))
-            .limit(1)
+            .limit(pageSize)
             .exec(cb);
     },
     queryLastEssays: function(page, pageSize, cb) {
@@ -62,7 +61,7 @@ EssaySchema.statics = {
             .find({})
             .sort({"meta.createAt": -1})
             .skip(pageSize*(1 - page))
-            .limit(1)
+            .limit(pageSize)
             .exec(cb);
     }
 };
