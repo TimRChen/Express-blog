@@ -40,7 +40,8 @@ EssaySchema.statics = {
     fetch: function (cb) {
         return this
             .find({})   // 取出所有数据
-            .sort('meta.updateAt')
+            .sort({"meta.createAt": -1})
+            .limit(5)
             .exec(cb);
     },
     findById: function (id, cb) {
@@ -48,6 +49,22 @@ EssaySchema.statics = {
             .findOne({_id: id})     // 查找单条数据
             .exec(cb);
     },
+    queryNextEssays: function(page, pageSize, cb) {
+        return this
+            .find({})
+            .sort({"meta.createAt": -1})
+            .skip(pageSize*(page - 1))
+            .limit(1)
+            .exec(cb);
+    },
+    queryLastEssays: function(page, pageSize, cb) {
+        return this
+            .find({})
+            .sort({"meta.createAt": -1})
+            .skip(pageSize*(1 - page))
+            .limit(1)
+            .exec(cb);
+    }
 };
 
 

@@ -30,6 +30,8 @@ router.use(function(req, res, next) {
 
 /* Index */
 router.get('/', Index.index);
+router.get('/next', Index.next);
+router.get('/previous', Index.next);
 
 
 /* User */

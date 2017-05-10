@@ -5,3 +5,5 @@ gruntfile.js
 test
 
 public/libs
+
+public/images
