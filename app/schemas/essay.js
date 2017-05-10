@@ -36,16 +36,22 @@ EssaySchema.pre('save', function(next) {
 
 // 定义静态方法
 EssaySchema.statics = {
-    fetch: function (pageSize, cb) {
+    fetch: function(cb) {
         return this
-            .find({})   // 取出所有数据
-            .sort({"meta.createAt": -1})
-            .limit(pageSize)
+            .find({})
+            .sort('meta.updateAt')
             .exec(cb);
     },
     findById: function (id, cb) {
         return this
             .findOne({_id: id})     // 查找单条数据
+            .exec(cb);
+    },
+    getMainPage: function (pageSize, cb) {
+        return this
+            .find({})   // 取出所有数据
+            .sort({"meta.createAt": -1})
+            .limit(pageSize)
             .exec(cb);
     },
     queryNextEssays: function(page, pageSize, cb) {

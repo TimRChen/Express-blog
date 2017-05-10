@@ -7,6 +7,8 @@
     *   当前分页为临时性解决方案，仅支持两页，每页8个数据支持
 *   更新文章模型
 
+![关注Timrchen](https://github.com/TimRChen/photoRepo/blob/master/2017_02.gif)
+
 ## 0.0.9 v
 *   通过`Mocha`测试，并修复测试出现问题
 *   部署上线

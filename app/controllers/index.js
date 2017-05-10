@@ -3,12 +3,10 @@ const EssayModel = require('../models/essay');
 
 // index page
 exports.index = function(req, res, next) {
-	console.log(`
-	***Welcome you ${req.session.user.name}***
-	`);
+	console.log(`***Welcome you ${req.session.user}***`);
 
 	let pageSize = 8;
-	EssayModel.fetch(pageSize, function(err, essays) {
+	EssayModel.getMainPage(pageSize, function(err, essays) {
 		if (err) {
 			console.log(err);
 		}
