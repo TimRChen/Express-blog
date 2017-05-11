@@ -7,6 +7,9 @@
     *   当前分页为临时性解决方案，仅支持两页，每页8个数据支持
 *   更新文章模型
 
+## 1.0.0 bug
+*   修复渲染markdown文章排版错误
+
 ![关注Timrchen](https://github.com/TimRChen/photoRepo/blob/master/2017_03.gif)
 
 ## 0.0.9 v
