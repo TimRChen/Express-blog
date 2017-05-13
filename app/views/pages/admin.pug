@@ -13,12 +13,13 @@ block content
                 .form-group
                     label.col-sm-2.control-label(for="inputContent") 文章内容
                     .col-sm-10
-                        #preview
+                        div#preview
                         textarea#inputContent.form-control(oninput="this.editor.update()" type="text" name="content" rows="6" placeholder=" Type **Markdown** here." autofocus) #{essay.content}
                 .form-group
                         label.col-sm-2.control-label(for="addImg") 添加图片
                         .col-sm-10
-                            input(type="file" name="poster" value=`${essay.poster}`)
+                            inpu
+                            t(type="file" name="poster" value=`${essay.poster}`)
                 .form-group
                     .col-sm-1
                     button.btn.btn-default(type="submit") 文章录入
