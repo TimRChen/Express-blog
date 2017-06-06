@@ -210,3 +210,10 @@
 canvas {
     opacity: 0.1!important;
 }
+
+/* bg */
+body {
+	background-image: url(../images/bg.gif);
+	background-repeat: repeat;
+	background-color: #FFFDFA;
+}
