@@ -17,7 +17,7 @@ block content
                     each item in essays
                         tr(class=`item-id-${item._id}`)
                             td #{item.title}
-                            td #{item.content}
+                            td.content #{item.content}
                             td #{moment(item.meta.createAt).format('MM/DD/YYYY')}
                             td #{item.pv}
                             td: a(target="_blank", href=`/essay/${item._id}`) 查看
