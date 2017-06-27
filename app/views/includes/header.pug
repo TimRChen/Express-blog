@@ -1,5 +1,7 @@
 - let style = poster ? poster : essay.poster;
 header#header.home-header.blog-background.banner-mask(style=style)
+    #barbg
+        #bar
     .nav-header.container
         .nav-header-container
             a.back-home(href="/") Home
@@ -62,3 +64,34 @@ header#header.home-header.blog-background.banner-mask(style=style)
                 .modal-footer
                     button.btn.btn-default(type="button" data-dismiss="modal") close
                     button.btn.btn-default(type="submit") submit
+
+//- 加载动画
+script.
+    document.onreadystatechange = function(){
+        var bar = document.getElementById('bar');
+        var barbg = bar.parentNode;
+        var wd = document.body.scrollWidth || document.documentElement.scrollWidth;
+        var t  = 10;
+        var d = 0;
+        var i = 0;
+        var timer = setInterval(goto, 1);
+        function goto(){
+            d = d + t ;
+            bar.style.width = d + 'px';
+            if(d >= wd){
+                clearInterval(timer);
+                bar.style.background = 'rgba(245,0,87,0)';
+                none();
+            }
+        }
+        function none(){
+            var a = 10 - i;
+            i++;
+            if(a != 0 && a != 10){a = a * 0.1}
+            if(a === 10){a = 1}
+            if(a === 0){a = 0}
+            barbg.style.background = 'rgba(245,0,87,' + a.toFixed(1) + ')';
+            if(a === 0){barbg.style.display = 'none'}
+            if(a != 0){setTimeout(none, 20);}
+        }
+    }

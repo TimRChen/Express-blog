@@ -4,6 +4,19 @@
 	font-family: freight-display-pro,serif;
 }
 
+#barbg {
+    position: absolute;
+    top: 0px;
+    height: 5px;
+    background:rgb(224,224,224);
+}
+
+#barbg #bar {
+    width: 0px;
+    height: 5px;
+    background:rgb(245,0,87);
+}
+
 /* header.pug */
 .banner-mask {
 	background-position: 50%;
