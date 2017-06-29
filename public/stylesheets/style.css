@@ -210,10 +210,10 @@
 }
 
 .list .content {
-    text-overflow: ellipsis;
+    /*text-overflow: ellipsis;*/
     max-width: 508px;
     display: -webkit-box;
-    overflow: hidden;
+    overflow: auto;
     -webkit-line-clamp: 8;
     -webkit-box-orient: vertical;
 }
