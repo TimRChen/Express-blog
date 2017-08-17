@@ -8,7 +8,7 @@ const User = require('../app/controllers/user');
 const Essay = require('../app/controllers/essay');
 
 mongoose.Promise = global.Promise;  // 赋值一个全局Promise
-mongoose.connect('mongodb://localhost/essay');
+mongoose.connect(dbUrl, {useMongoClient: true});
 
 // create session db
 router.use(session({

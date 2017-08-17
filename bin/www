@@ -6,7 +6,17 @@
 
 var app = require('../app');
 var debug = require('debug')('express-blog:server');
-var http = require('http');
+var fs = require('fs');
+var http2 = require('http2');
+
+
+/**
+ * Http2 Server ssl
+ */
+var options = {
+  key: fs.readFileSync('./http2-key/server.key'),
+  cert: fs.readFileSync('./http2-key/server.crt')
+};
 
 /**
  * Get port from environment and store in Express.
@@ -19,7 +29,7 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+var server = http2.createServer(options, app);
 
 /**
  * Listen on provided port, on all network interfaces.
