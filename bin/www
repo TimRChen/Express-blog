@@ -7,15 +7,16 @@
 var app = require('../app');
 var debug = require('debug')('express-blog:server');
 var fs = require('fs');
-var http2 = require('http2');
+// var https = require('https');
+var http = require('http');
 
 
 /**
  * Http2 Server ssl
  */
 var options = {
-  key: fs.readFileSync('./http2-key/server.key'),
-  cert: fs.readFileSync('./http2-key/server.crt')
+	pfx: fs.readFileSync('./http2-key/server.pfx'),
+	passphrase: '995511'
 };
 
 /**
@@ -29,7 +30,8 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http2.createServer(options, app);
+// var server = https.createServer(options, app);
+var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
